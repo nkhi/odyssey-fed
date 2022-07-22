@@ -1,0 +1,21 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key"])
+
+type Query {
+    "A list of all locations"
+    locations: [Location!]!
+
+    "Information on one location"
+    location(id: ID!): Location
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  "The name of the location"
+  name: String!
+  "A short description about the location"
+  description: String!
+  "The location's main photo as a URL"
+  photo: String!
+}
